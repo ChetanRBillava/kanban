@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kanban_board/core/constants/strings.dart';
+import 'package:kanban_board/presentation/router/app_router.dart';
 import 'package:kanban_board/presentation/screens/home_screen.dart';
+
+import 'package:kanban_board/logic/cubit/app_theme_cubit.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,13 +16,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Kanban',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => AppThemeCubit(),
+        ),
+      ],
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: Strings.appTitle,
+        initialRoute: AppRouter.splash,
+        onGenerateRoute: AppRouter.onGenerateRoute,
       ),
-      home: const MyHomePage(title: 'Kanban Home Page'),
     );
   }
 }
