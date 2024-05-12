@@ -67,9 +67,9 @@ class _SplashScreenState extends State<SplashScreen>
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(AppImages.logo, width: MediaQuery.sizeOf(context).width/2, height: MediaQuery.sizeOf(context).width/2,),
-                  AppTexts.normalText(textProperties: TextProperties(text: Strings.appTitle))      ,
-                  const CircularProgressIndicator(),
+                  AppTexts.labelText(textProperties: TextProperties(text: Strings.appTitle))      ,
                   AppTexts.normalText(textProperties: TextProperties(text: Strings.appVersion))      ,
+                  const CircularProgressIndicator(),
                 ],
               ),
             ],

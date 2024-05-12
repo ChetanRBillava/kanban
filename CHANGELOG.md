@@ -25,6 +25,15 @@ Here we write the updates of future releases.
 
 
 
+## [1.0.2] - 12-05-2024
+
+### Added
+- Dummy cubit for testing persistent storage with Hydrated bloc
+- User models and images
+- Kanban logics like adding task, updating status and recording time
+
+
+
 ## [1.0.1] - 12-05-2024
 
 ### Added
