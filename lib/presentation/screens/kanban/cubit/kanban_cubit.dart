@@ -131,7 +131,6 @@ class KanbanCubit extends HydratedCubit<KanbanState> {
         tasks: tasks,
     ));
   }*/
-
   @override
   KanbanState? fromJson(Map<String, dynamic> json) {
     final initialData = KanbanState.fromMap(json);

@@ -25,6 +25,7 @@ Here we write the updates of future releases.
 
 
 
+
 ## [2.0.1] - 15-05-2024
 
 ### Added

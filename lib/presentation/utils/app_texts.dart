@@ -66,6 +66,20 @@ class AppTexts {
       },
     );
   }
+
+  static Widget captionText({required TextProperties textProperties}) {
+    return BlocBuilder<AppThemeCubit, AppThemeState>(
+      builder: (context, appThemeState) {
+        return Text(
+          textProperties.text,
+          style: TextStyle(
+              fontSize: 10,
+              color:  textProperties.textColor ?? appThemeState.themeClass.textCaptionColor
+          ),
+        );
+      },
+    );
+  }
 }
 
 class TextProperties {
