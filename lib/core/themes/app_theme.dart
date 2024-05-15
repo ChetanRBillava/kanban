@@ -24,6 +24,9 @@ class AppTheme {
   ///icon
   late Color iconPrimary;
 
+  ///card
+  late Color cardBackground;
+
   ///button
   late Color buttonBackgroundColorPrimary;
   late Color buttonBackgroundColorSecondary;
@@ -52,7 +55,7 @@ class LightTheme extends AppTheme{
 
   @override
   // TODO: implement primary
-  Color get focusedFormFieldBorderColor => const Color(0xffffffff);
+  Color get focusedFormFieldBorderColor => const Color(0xff000000);
 
   @override
   // TODO: implement primary
@@ -101,6 +104,11 @@ class LightTheme extends AppTheme{
   // TODO: implement primary
   Color get iconPrimary => const Color(0xff000000);
 
+  ///card
+  @override
+  // TODO: implement primary
+  Color get cardBackground => const Color(0xfff1ebeb);
+
   ///button
   @override
   // TODO: implement primary
@@ -137,7 +145,7 @@ class DarkTheme extends AppTheme{
 
   @override
   // TODO: implement primary
-  Color get focusedFormFieldBorderColor => const Color(0xff000000);
+  Color get focusedFormFieldBorderColor => const Color(0xffffffff);
 
   @override
   // TODO: implement primary
@@ -185,6 +193,11 @@ class DarkTheme extends AppTheme{
   @override
   // TODO: implement primary
   Color get iconPrimary => const Color(0xffffffff);
+
+  ///card
+  @override
+  // TODO: implement primary
+  Color get cardBackground => const Color(0xfff1ebeb);
 
   ///button
   @override
