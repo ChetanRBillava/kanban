@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kanban_board/logic/cubit/app_theme_cubit.dart';
-import 'package:kanban_board/presentation/utils/app_texts.dart';
-import 'package:kanban_board/presentation/utils/custom_print.dart';
+import 'package:kanban/logic/cubit/app_theme_cubit.dart';
+import 'package:kanban/presentation/utils/app_texts.dart';
+import 'package:kanban/presentation/utils/custom_print.dart';
 
 class TimerText extends StatefulWidget {
   final String startTime, timeSpent;

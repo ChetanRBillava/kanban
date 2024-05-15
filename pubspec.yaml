@@ -1,8 +1,8 @@
-name: kanban_board
+name: kanban
 description: "A new Flutter project with Kanban board features."
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.2+3
+version: 2.0.0+4
 
 environment:
   sdk: '>=3.3.4 <4.0.0'
@@ -17,6 +17,9 @@ dependencies:
   hydrated_bloc:
   path_provider:
   json_serializable:
+  dotted_border:
+  kanban_board:
+  drag_and_drop_lists:
 
 dev_dependencies:
   flutter_test:

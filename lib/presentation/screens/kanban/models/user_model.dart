@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:kanban_board/core/constants/images.dart';
+import 'package:kanban/core/constants/images.dart';
 
 class UserModel {
   String userId;

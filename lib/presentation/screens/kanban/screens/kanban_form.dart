@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kanban_board/core/constants/strings.dart';
-import 'package:kanban_board/logic/cubit/app_theme_cubit.dart';
-import 'package:kanban_board/presentation/screens/kanban/cubit/kanban_form_cubit.dart';
-import 'package:kanban_board/presentation/screens/kanban/models/user_model.dart';
-import 'package:kanban_board/presentation/utils/app_texts.dart';
+import 'package:kanban/core/constants/strings.dart';
+import 'package:kanban/logic/cubit/app_theme_cubit.dart';
+import 'package:kanban/presentation/screens/kanban/cubit/kanban_form_cubit.dart';
+import 'package:kanban/presentation/screens/kanban/models/user_model.dart';
+import 'package:kanban/presentation/utils/app_texts.dart';
 
 class KanbanForm extends StatefulWidget {
   const KanbanForm({super.key});

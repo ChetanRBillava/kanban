@@ -4,8 +4,8 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kanban_board/core/themes/app_theme.dart';
-import 'package:kanban_board/presentation/utils/custom_print.dart';
+import 'package:kanban/core/themes/app_theme.dart';
+import 'package:kanban/presentation/utils/custom_print.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 

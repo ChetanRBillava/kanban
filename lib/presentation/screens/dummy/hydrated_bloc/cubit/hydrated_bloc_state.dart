@@ -1,4 +1,4 @@
-part of 'dummy_cubit.dart';
+part of 'hydrated_bloc_cubit.dart';
 
 class DummyState extends Equatable {
   final int count;

@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kanban_board/core/constants/strings.dart';
-import 'package:kanban_board/logic/cubit/app_theme_cubit.dart';
-import 'package:kanban_board/presentation/screens/dummy/persistent/cubit/dummy_cubit.dart';
-import 'package:kanban_board/presentation/utils/app_texts.dart';
+import 'package:kanban/core/constants/strings.dart';
+import 'package:kanban/logic/cubit/app_theme_cubit.dart';
+import 'package:kanban/presentation/screens/dummy/hydrated_bloc/cubit/hydrated_bloc_cubit.dart';
+import 'package:kanban/presentation/utils/app_texts.dart';
 
-class DummyScreen extends StatefulWidget {
-  const DummyScreen({super.key});
+class HydratedBlocScreen extends StatefulWidget {
+  const HydratedBlocScreen({super.key});
 
   @override
-  State<DummyScreen> createState() => _DummyScreenState();
+  State<HydratedBlocScreen> createState() => _HydratedBlocScreenState();
 }
 
-class _DummyScreenState extends State<DummyScreen> {
+class _HydratedBlocScreenState extends State<HydratedBlocScreen> {
   int _counter = 0;
 
   void _incrementCounter() {
@@ -30,7 +30,7 @@ class _DummyScreenState extends State<DummyScreen> {
   Widget build(BuildContext context) {
     return BlocBuilder<AppThemeCubit, AppThemeState>(
       builder: (context, appThemeState) {
-        return BlocBuilder<DummyCubit, DummyState>(
+        return BlocBuilder<HydratedBlocCubit, DummyState>(
           builder: (context, dummyState) {
             return Scaffold(
               backgroundColor: appThemeState.themeClass.backgroundColor,
@@ -56,7 +56,7 @@ class _DummyScreenState extends State<DummyScreen> {
               floatingActionButton: FloatingActionButton(
                 onPressed: (){
 
-                  BlocProvider.of<DummyCubit>(context).increment();
+                  BlocProvider.of<HydratedBlocCubit>(context).increment();
                 },
                 tooltip: 'Increment',
                 child: const Icon(Icons.add),

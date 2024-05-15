@@ -4,9 +4,9 @@ import 'dart:convert';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:kanban_board/presentation/screens/kanban/models/kanban_model.dart';
-import 'package:kanban_board/presentation/screens/kanban/models/user_model.dart';
-import 'package:kanban_board/presentation/utils/custom_print.dart';
+import 'package:kanban/presentation/screens/kanban/models/kanban_model.dart';
+import 'package:kanban/presentation/screens/kanban/models/user_model.dart';
+import 'package:kanban/presentation/utils/custom_print.dart';
 
 part 'kanban_state.dart';
 

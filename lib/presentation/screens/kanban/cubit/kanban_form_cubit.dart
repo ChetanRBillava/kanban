@@ -2,8 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kanban_board/presentation/screens/kanban/cubit/kanban_cubit.dart';
-import 'package:kanban_board/presentation/screens/kanban/models/user_model.dart';
+import 'package:kanban/presentation/screens/kanban/cubit/kanban_cubit.dart';
+import 'package:kanban/presentation/screens/kanban/models/user_model.dart';
 
 part 'kanban_form_state.dart';
 

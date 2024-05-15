@@ -1,13 +1,10 @@
-import 'dart:convert';
-
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
-part 'dummy_state.dart';
+part 'hydrated_bloc_state.dart';
 
-class DummyCubit extends HydratedCubit<DummyState> {
-  DummyCubit() : super(DummyState.initialize());
+class HydratedBlocCubit extends HydratedCubit<DummyState> {
+  HydratedBlocCubit() : super(DummyState.initialize());
 
   increment(){
     emit(state.copyWith(count: state.count + 1));

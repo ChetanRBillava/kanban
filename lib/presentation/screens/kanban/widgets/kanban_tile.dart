@@ -2,20 +2,22 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kanban_board/logic/cubit/app_theme_cubit.dart';
-import 'package:kanban_board/presentation/screens/kanban/cubit/kanban_cubit.dart';
-import 'package:kanban_board/presentation/screens/kanban/models/kanban_model.dart';
-import 'package:kanban_board/presentation/screens/kanban/widgets/timer_text.dart';
-import 'package:kanban_board/presentation/utils/app_texts.dart';
-import 'package:kanban_board/presentation/utils/custom_print.dart';
+import 'package:kanban/logic/cubit/app_theme_cubit.dart';
+import 'package:kanban/presentation/screens/kanban/cubit/kanban_cubit.dart';
+import 'package:kanban/presentation/screens/kanban/models/kanban_model.dart';
+import 'package:kanban/presentation/screens/kanban/widgets/timer_text.dart';
+import 'package:kanban/presentation/utils/app_texts.dart';
+import 'package:kanban/presentation/utils/custom_print.dart';
 
 class KanbanTile extends StatelessWidget {
   final int index;
   final KanbanModel task;
+  final String? status;
   const KanbanTile({
     super.key,
     required this.task,
-    required this.index
+    required this.index,
+    this.status
   });
 
   @override
@@ -25,7 +27,7 @@ class KanbanTile extends StatelessWidget {
         return BlocBuilder<KanbanCubit, KanbanState>(
   builder: (context, kanbanState) {
     return Container(
-          width: 300,
+          width: 310,
           color: appThemeState.themeClass.cardBackground,
           padding: const EdgeInsets.all(8.0),
           child: Row(
@@ -114,9 +116,18 @@ class KanbanTile extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 8),
 
-                  DropdownButton(
+                  const SizedBox(height: 12),
+
+
+                  AppTexts.normalText(
+                    textProperties: TextProperties(
+                        text: status??task.status,
+                        textColor: appThemeState.themeClass.textColorSecondary
+                    ),
+                  )
+
+                  /*DropdownButton(
                     value: task.status,
                     underline: const SizedBox(),
                     items: [
@@ -148,7 +159,7 @@ class KanbanTile extends StatelessWidget {
                         value!,
                       );
                     },
-                  ),
+                  ),*/
                 ],
               )
             ],

@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:kanban_board/presentation/screens/kanban/models/user_model.dart';
+import 'package:kanban/presentation/screens/kanban/models/user_model.dart';
 
 class KanbanModel {
   int id;
