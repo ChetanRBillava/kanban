@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:kanban_board/core/constants/strings.dart';
-import 'package:kanban_board/presentation/router/app_router.dart';
-import 'package:kanban_board/presentation/screens/dummy/persistent/cubit/dummy_cubit.dart';
-import 'package:kanban_board/presentation/screens/dummy/persistent/screens/home_screen.dart';
+import 'package:kanban/core/constants/strings.dart';
+import 'package:kanban/presentation/router/app_router.dart';
 
-import 'package:kanban_board/logic/cubit/app_theme_cubit.dart';
-import 'package:kanban_board/presentation/screens/kanban/cubit/kanban_cubit.dart';
-import 'package:kanban_board/presentation/screens/kanban/cubit/kanban_form_cubit.dart';
+import 'package:kanban/logic/cubit/app_theme_cubit.dart';
+import 'package:kanban/presentation/router/navigation_service.dart';
+import 'package:kanban/presentation/screens/dummy/hydrated_bloc/cubit/hydrated_bloc_cubit.dart';
+import 'package:kanban/presentation/screens/kanban/cubit/kanban_cubit.dart';
+import 'package:kanban/presentation/screens/kanban/cubit/kanban_form_cubit.dart';
 import 'package:path_provider/path_provider.dart';
 
 Future<void> main() async {
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
           create: (context) => AppThemeCubit(),
         ),
         BlocProvider(
-          create: (context) => DummyCubit(),
+          create: (context) => HydratedBlocCubit(),
         ),
         BlocProvider(
           create: (context) => KanbanFormCubit(),
@@ -43,7 +43,8 @@ class MyApp extends StatelessWidget {
           create: (context) => KanbanCubit(),
         ),
       ],
-      child: const MaterialApp(
+      child: MaterialApp(
+        key: NavigationService.navigatorKey,
         debugShowCheckedModeBanner: false,
         title: Strings.appTitle,
         initialRoute: AppRouter.splash,

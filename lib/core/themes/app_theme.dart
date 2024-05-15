@@ -197,7 +197,7 @@ class DarkTheme extends AppTheme{
   ///card
   @override
   // TODO: implement primary
-  Color get cardBackground => const Color(0xfff1ebeb);
+  Color get cardBackground => const Color(0xff00106b);
 
   ///button
   @override

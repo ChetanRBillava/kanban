@@ -1,6 +1,6 @@
 
 
-import 'package:kanban_board/core/constants/bools.dart';
+import 'package:kanban/core/constants/bools.dart';
 
 class CustomPrint {
   ///print data is the data to be printed

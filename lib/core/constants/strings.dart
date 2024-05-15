@@ -3,5 +3,5 @@ class Strings {
   static const appTitle = 'Kanban';
   static const kanbanHome = 'Kanban Home Page';
   static const kanbanForm = 'Kanban Form';
-  static const appVersion = '1.0.2';
+  static const appVersion = '2.0.1';
 }

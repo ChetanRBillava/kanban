@@ -3,12 +3,12 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kanban_board/core/constants/images.dart';
-import 'package:kanban_board/core/constants/strings.dart';
-import 'package:kanban_board/logic/cubit/app_theme_cubit.dart';
-import 'package:kanban_board/presentation/router/app_router.dart';
-import 'package:kanban_board/presentation/utils/app_texts.dart';
-import 'package:kanban_board/presentation/utils/custom_print.dart';
+import 'package:kanban/core/constants/images.dart';
+import 'package:kanban/core/constants/strings.dart';
+import 'package:kanban/logic/cubit/app_theme_cubit.dart';
+import 'package:kanban/presentation/router/app_router.dart';
+import 'package:kanban/presentation/utils/app_texts.dart';
+import 'package:kanban/presentation/utils/custom_print.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

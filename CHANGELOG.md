@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased] - dd-mm-yyyy
 Here we write the updates of future releases.
 
-1.0.xx belongs to Core features of Kanban board
+2.0.xx belongs to UI render and state logics of Kanban feature
 
 ### Added
 
@@ -20,6 +20,31 @@ Here we write the updates of future releases.
 ### Fixed
 
 ### Security
+
+
+
+
+
+
+## [2.0.1] - 15-05-2024
+
+### Added
+- New data model to represent the finalised structure of kanban flow
+- Finalised design of Kanban Flow
+
+### Changed
+- logics related to the final kanban flow
+
+
+
+## [2.0.0] - 15-05-2024
+
+### Added
+- 3 reference folders for logics and UI representing Kanban plugin, Drag and Drop list plugin and Flutter's draggable widget respectively
+- Hydrated bloc logics for persistent storage of values
+
+### Changed
+- name of the project from 'kanan_board' to 'kanban' in order to resolve the conflicts with the kanban plugin
 
 
 

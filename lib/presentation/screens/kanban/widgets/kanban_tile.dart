@@ -2,20 +2,23 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kanban_board/logic/cubit/app_theme_cubit.dart';
-import 'package:kanban_board/presentation/screens/kanban/cubit/kanban_cubit.dart';
-import 'package:kanban_board/presentation/screens/kanban/models/kanban_model.dart';
-import 'package:kanban_board/presentation/screens/kanban/widgets/timer_text.dart';
-import 'package:kanban_board/presentation/utils/app_texts.dart';
-import 'package:kanban_board/presentation/utils/custom_print.dart';
+import 'package:kanban/logic/cubit/app_theme_cubit.dart';
+import 'package:kanban/presentation/screens/kanban/cubit/kanban_cubit.dart';
+import 'package:kanban/presentation/screens/kanban/models/kanban_model.dart';
+import 'package:kanban/presentation/screens/kanban/widgets/timer_text.dart';
+import 'package:kanban/presentation/utils/app_texts.dart';
+import 'package:kanban/presentation/utils/custom_print.dart';
 
 class KanbanTile extends StatelessWidget {
-  final int index;
+  final int taskIndex, structureIndex;
   final KanbanModel task;
+  final String? status;
   const KanbanTile({
     super.key,
     required this.task,
-    required this.index
+    required this.structureIndex,
+    required this.taskIndex,
+    this.status
   });
 
   @override
@@ -25,20 +28,23 @@ class KanbanTile extends StatelessWidget {
         return BlocBuilder<KanbanCubit, KanbanState>(
   builder: (context, kanbanState) {
     return Container(
-          width: 300,
-          color: appThemeState.themeClass.cardBackground,
+          width: 250,
           padding: const EdgeInsets.all(8.0),
-          child: Row(
+      decoration: BoxDecoration(
+        color: appThemeState.themeClass.cardBackground,
+        borderRadius: BorderRadius.all(Radius.circular(5))
+      ),
+      child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(width: 200, child: AppTexts.labelText(
+                  SizedBox(width: 150, child: AppTexts.labelText(
                     textProperties: TextProperties(
                         text: task.label,
-                        textColor: appThemeState.themeClass.textColorSecondary),
+                        textColor: appThemeState.themeClass.textColorPrimary),
                   )),
                   const SizedBox(height: 8),
                   Row(
@@ -50,7 +56,7 @@ class KanbanTile extends StatelessWidget {
                       AppTexts.normalText(
                         textProperties: TextProperties(
                             text: task.user.name,
-                            textColor: appThemeState.themeClass.textColorSecondary
+                            textColor: appThemeState.themeClass.textColorPrimary
                         ),
                       )
                     ],
@@ -71,7 +77,7 @@ class KanbanTile extends StatelessWidget {
                       AppTexts.normalText(
                           textProperties: TextProperties(
                               text: task.timeSpent,
-                              textColor: appThemeState.themeClass.black
+                              textColor: appThemeState.themeClass.textColorPrimary
                           )
                       ),
 
@@ -80,7 +86,8 @@ class KanbanTile extends StatelessWidget {
                           onTap: (){
 
                             BlocProvider.of<KanbanCubit>(context).stopTimer(
-                              index,
+                              structureIndex,
+                              taskIndex,
                               task.id,
                             );
                           },
@@ -91,7 +98,7 @@ class KanbanTile extends StatelessWidget {
                             if(kanbanState.currentTask!=-1){
                               ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
-                                    duration: Duration(seconds: 3),
+                                    duration: const Duration(seconds: 3),
                                     content: AppTexts.headingText(
                                         textProperties: TextProperties(
                                             text: 'Please Stop the previous task!!!')
@@ -101,7 +108,8 @@ class KanbanTile extends StatelessWidget {
                             }
                             else{
                               BlocProvider.of<KanbanCubit>(context).startTimer(
-                                index,
+                                structureIndex,
+                                taskIndex,
                                 task.id,
                               );
                             }
@@ -114,9 +122,18 @@ class KanbanTile extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 8),
 
-                  DropdownButton(
+                  const SizedBox(height: 12),
+
+
+                  AppTexts.normalText(
+                    textProperties: TextProperties(
+                        text: /*status??*/task.status,
+                        textColor: appThemeState.themeClass.textColorPrimary
+                    ),
+                  )
+
+                  /*DropdownButton(
                     value: task.status,
                     underline: const SizedBox(),
                     items: [
@@ -148,7 +165,7 @@ class KanbanTile extends StatelessWidget {
                         value!,
                       );
                     },
-                  ),
+                  ),*/
                 ],
               )
             ],

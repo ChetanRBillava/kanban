@@ -1,4 +1,4 @@
-# kanban_board
+# kanban
 
 A new Flutter project with Kanban board features.
 

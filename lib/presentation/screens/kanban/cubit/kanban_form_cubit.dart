@@ -2,13 +2,17 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kanban_board/presentation/screens/kanban/cubit/kanban_cubit.dart';
-import 'package:kanban_board/presentation/screens/kanban/models/user_model.dart';
+import 'package:kanban/presentation/screens/kanban/cubit/kanban_cubit.dart';
+import 'package:kanban/presentation/screens/kanban/models/user_model.dart';
 
 part 'kanban_form_state.dart';
 
 class KanbanFormCubit extends Cubit<KanbanFormState> {
   KanbanFormCubit() : super(KanbanFormState.initialize());
+
+  setStatus(int index){
+    emit(state.copyWith(index: index));
+  }
 
   updateUser(UserModel user){
     emit(state.copyWith(user: user));
@@ -19,6 +23,7 @@ class KanbanFormCubit extends Cubit<KanbanFormState> {
     BlocProvider.of<KanbanCubit>(context).addTask(
         state.user!,
         state.taskLabelController.text,
+      state.index
     );
     emit(KanbanFormState.initialize());
     Navigator.pop(context);
