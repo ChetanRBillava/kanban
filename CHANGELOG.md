@@ -25,6 +25,17 @@ Here we write the updates of future releases.
 
 
 
+## [2.0.1] - 15-05-2024
+
+### Added
+- New data model to represent the finalised structure of kanban flow
+- Finalised design of Kanban Flow
+
+### Changed
+- logics related to the final kanban flow
+
+
+
 ## [2.0.0] - 15-05-2024
 
 ### Added

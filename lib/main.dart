@@ -5,6 +5,7 @@ import 'package:kanban/core/constants/strings.dart';
 import 'package:kanban/presentation/router/app_router.dart';
 
 import 'package:kanban/logic/cubit/app_theme_cubit.dart';
+import 'package:kanban/presentation/router/navigation_service.dart';
 import 'package:kanban/presentation/screens/dummy/hydrated_bloc/cubit/hydrated_bloc_cubit.dart';
 import 'package:kanban/presentation/screens/kanban/cubit/kanban_cubit.dart';
 import 'package:kanban/presentation/screens/kanban/cubit/kanban_form_cubit.dart';
@@ -42,7 +43,8 @@ class MyApp extends StatelessWidget {
           create: (context) => KanbanCubit(),
         ),
       ],
-      child: const MaterialApp(
+      child: MaterialApp(
+        key: NavigationService.navigatorKey,
         debugShowCheckedModeBanner: false,
         title: Strings.appTitle,
         initialRoute: AppRouter.splash,

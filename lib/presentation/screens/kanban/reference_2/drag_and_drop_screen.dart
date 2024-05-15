@@ -86,8 +86,8 @@ class _DragAndDropScreenState extends State<DragAndDropScreen> {
         .map((task) => DragAndDropItem(
       child: KanbanTile(
         task: task,
-        index: 0,
-        status: list.status,
+        taskIndex: 0,
+        status: list.status, structureIndex: -1,
       ),
     ))
         .toList(),

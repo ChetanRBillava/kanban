@@ -50,7 +50,7 @@ class _KanbanReferenceScreenState extends State<KanbanReferenceScreen> {
 
                     return KanbanTile(
                       task: element['items'][index],
-                      index: index,);
+                      taskIndex: index, structureIndex: -1,);
                   }));
             }),
             onItemLongPress: (cardIndex, listIndex) {},

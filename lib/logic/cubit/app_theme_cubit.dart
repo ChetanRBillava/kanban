@@ -87,4 +87,8 @@ class AppThemeCubit extends Cubit<AppThemeState> {
       }
     }
   }
+
+  Color getInProgress(){
+    return state.themeClass.successColor;
+  }
 }

@@ -10,6 +10,10 @@ part 'kanban_form_state.dart';
 class KanbanFormCubit extends Cubit<KanbanFormState> {
   KanbanFormCubit() : super(KanbanFormState.initialize());
 
+  setStatus(int index){
+    emit(state.copyWith(index: index));
+  }
+
   updateUser(UserModel user){
     emit(state.copyWith(user: user));
   }
@@ -19,6 +23,7 @@ class KanbanFormCubit extends Cubit<KanbanFormState> {
     BlocProvider.of<KanbanCubit>(context).addTask(
         state.user!,
         state.taskLabelController.text,
+      state.index
     );
     emit(KanbanFormState.initialize());
     Navigator.pop(context);

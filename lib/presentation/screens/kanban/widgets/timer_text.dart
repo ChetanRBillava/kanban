@@ -62,7 +62,7 @@ class _TimerTextState extends State<TimerText> {
   Widget build(BuildContext context) {
     return BlocBuilder<AppThemeCubit, AppThemeState>(
       builder: (context, appThemeState) {
-        return AppTexts.normalText(textProperties: TextProperties(text: time, textColor: appThemeState.themeClass.black));
+        return AppTexts.normalText(textProperties: TextProperties(text: time, textColor: appThemeState.themeClass.textColorPrimary));
       },
     );
   }

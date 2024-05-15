@@ -35,11 +35,14 @@ class _HydratedBlocScreenState extends State<HydratedBlocScreen> {
             return Scaffold(
               backgroundColor: appThemeState.themeClass.backgroundColor,
               appBar: AppBar(
-                //leading: Icon(Icons.arrow_back, color: appThemeState.themeClass.textColor_1,),
-                automaticallyImplyLeading: false,
+                leading: GestureDetector(
+                    onTap: (){
+                      Navigator.pop(context);
+                    },
+                    child: Icon(Icons.arrow_back, color: appThemeState.themeClass.iconPrimary,)),
                 backgroundColor: appThemeState.themeClass.appbarBackgroundColor,
                 title: AppTexts.headingText(
-                    textProperties: TextProperties(text: Strings.kanbanHome)),
+                    textProperties: TextProperties(text: 'Hydrated Cubit')),
               ),
               body: Center(
                 child: Column(

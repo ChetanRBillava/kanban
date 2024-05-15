@@ -10,13 +10,14 @@ import 'package:kanban/presentation/utils/app_texts.dart';
 import 'package:kanban/presentation/utils/custom_print.dart';
 
 class KanbanTile extends StatelessWidget {
-  final int index;
+  final int taskIndex, structureIndex;
   final KanbanModel task;
   final String? status;
   const KanbanTile({
     super.key,
     required this.task,
-    required this.index,
+    required this.structureIndex,
+    required this.taskIndex,
     this.status
   });
 
@@ -27,20 +28,23 @@ class KanbanTile extends StatelessWidget {
         return BlocBuilder<KanbanCubit, KanbanState>(
   builder: (context, kanbanState) {
     return Container(
-          width: 310,
-          color: appThemeState.themeClass.cardBackground,
+          width: 250,
           padding: const EdgeInsets.all(8.0),
-          child: Row(
+      decoration: BoxDecoration(
+        color: appThemeState.themeClass.cardBackground,
+        borderRadius: BorderRadius.all(Radius.circular(5))
+      ),
+      child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(width: 200, child: AppTexts.labelText(
+                  SizedBox(width: 150, child: AppTexts.labelText(
                     textProperties: TextProperties(
                         text: task.label,
-                        textColor: appThemeState.themeClass.textColorSecondary),
+                        textColor: appThemeState.themeClass.textColorPrimary),
                   )),
                   const SizedBox(height: 8),
                   Row(
@@ -52,7 +56,7 @@ class KanbanTile extends StatelessWidget {
                       AppTexts.normalText(
                         textProperties: TextProperties(
                             text: task.user.name,
-                            textColor: appThemeState.themeClass.textColorSecondary
+                            textColor: appThemeState.themeClass.textColorPrimary
                         ),
                       )
                     ],
@@ -73,7 +77,7 @@ class KanbanTile extends StatelessWidget {
                       AppTexts.normalText(
                           textProperties: TextProperties(
                               text: task.timeSpent,
-                              textColor: appThemeState.themeClass.black
+                              textColor: appThemeState.themeClass.textColorPrimary
                           )
                       ),
 
@@ -82,7 +86,8 @@ class KanbanTile extends StatelessWidget {
                           onTap: (){
 
                             BlocProvider.of<KanbanCubit>(context).stopTimer(
-                              index,
+                              structureIndex,
+                              taskIndex,
                               task.id,
                             );
                           },
@@ -93,7 +98,7 @@ class KanbanTile extends StatelessWidget {
                             if(kanbanState.currentTask!=-1){
                               ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
-                                    duration: Duration(seconds: 3),
+                                    duration: const Duration(seconds: 3),
                                     content: AppTexts.headingText(
                                         textProperties: TextProperties(
                                             text: 'Please Stop the previous task!!!')
@@ -103,7 +108,8 @@ class KanbanTile extends StatelessWidget {
                             }
                             else{
                               BlocProvider.of<KanbanCubit>(context).startTimer(
-                                index,
+                                structureIndex,
+                                taskIndex,
                                 task.id,
                               );
                             }
@@ -122,8 +128,8 @@ class KanbanTile extends StatelessWidget {
 
                   AppTexts.normalText(
                     textProperties: TextProperties(
-                        text: status??task.status,
-                        textColor: appThemeState.themeClass.textColorSecondary
+                        text: /*status??*/task.status,
+                        textColor: appThemeState.themeClass.textColorPrimary
                     ),
                   )
 

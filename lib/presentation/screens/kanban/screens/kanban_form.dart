@@ -28,7 +28,11 @@ class _KanbanFormState extends State<KanbanForm> {
               backgroundColor: appThemeState.themeClass.backgroundColor,
               appBar: AppBar(
                 backgroundColor: appThemeState.themeClass.appbarBackgroundColor,
-                automaticallyImplyLeading: false,
+                leading: GestureDetector(
+                    onTap: (){
+                      Navigator.pop(context);
+                    },
+                    child: Icon(Icons.arrow_back, color: appThemeState.themeClass.iconPrimary,)),
                 title: AppTexts.headingText(
                     textProperties: TextProperties(text: Strings.kanbanForm)),),
               body: Form(
