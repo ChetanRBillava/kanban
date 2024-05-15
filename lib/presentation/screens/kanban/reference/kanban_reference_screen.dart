@@ -31,44 +31,42 @@ class _KanbanReferenceScreenState extends State<KanbanReferenceScreen> {
       backgroundColor: const Color.fromRGBO(249, 244, 240, 1),
       appBar: AppBar(title: const Text('Home'),),
       body: SafeArea(
-        child: Expanded(
-          child: KanbanBoard(
-            List.generate(kanbanData.length, (index) {
-              final element = kanbanData.values.elementAt(index);
-              customPrint.myCustomPrint('Title: ${kanbanData.keys.elementAt(index)}');
-              return BoardListsData(
-                  backgroundColor: const Color.fromRGBO(249, 244, 240, 1),
-                  width: 350.0,
-                  footer: const ListFooter(),
-                  headerBackgroundColor:
-                  const Color.fromRGBO(249, 244, 240, 1),
-                  header: ListHeader(
-                    title: kanbanData.keys.elementAt(index),
-                    stateColor: element['color'],
-                  ),
-                  items: List.generate(element['items'].length, (index) {
+        child: KanbanBoard(
+          List.generate(kanbanData.length, (index) {
+            final element = kanbanData.values.elementAt(index);
+            customPrint.myCustomPrint('Title: ${kanbanData.keys.elementAt(index)}');
+            return BoardListsData(
+                backgroundColor: const Color.fromRGBO(249, 244, 240, 1),
+                width: 350.0,
+                footer: const ListFooter(),
+                headerBackgroundColor:
+                const Color.fromRGBO(249, 244, 240, 1),
+                header: ListHeader(
+                  title: kanbanData.keys.elementAt(index),
+                  stateColor: element['color'],
+                ),
+                items: List.generate(element['items'].length, (index) {
 
-                    return KanbanTile(
-                      task: element['items'][index],
-                      taskIndex: index, structureIndex: -1,);
-                  }));
-            }),
-            onItemLongPress: (cardIndex, listIndex) {},
-            onItemReorder:
-                (oldCardIndex, newCardIndex, oldListIndex, newListIndex) {},
-            onListLongPress: (listIndex) {},
-            onListReorder: (oldListIndex, newListIndex) {},
-            onItemTap: (cardIndex, listIndex) {},
-            onListTap: (listIndex) {},
-            onListRename: (oldName, newName) {},
-            backgroundColor: const Color.fromRGBO(249, 244, 240, 1),
-            displacementY: 124,
-            displacementX: 100,
-            textStyle: const TextStyle(
-                fontSize: 18,
-                color: Colors.black,
-                fontWeight: FontWeight.w500),
-          ),
+                  return KanbanTile(
+                    task: element['items'][index],
+                    taskIndex: index, structureIndex: -1,);
+                }));
+          }),
+          onItemLongPress: (cardIndex, listIndex) {},
+          onItemReorder:
+              (oldCardIndex, newCardIndex, oldListIndex, newListIndex) {},
+          onListLongPress: (listIndex) {},
+          onListReorder: (oldListIndex, newListIndex) {},
+          onItemTap: (cardIndex, listIndex) {},
+          onListTap: (listIndex) {},
+          onListRename: (oldName, newName) {},
+          backgroundColor: const Color.fromRGBO(249, 244, 240, 1),
+          displacementY: 124,
+          displacementX: 100,
+          textStyle: const TextStyle(
+              fontSize: 18,
+              color: Colors.black,
+              fontWeight: FontWeight.w500),
         ),
       ),
     );

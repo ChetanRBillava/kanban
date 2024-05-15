@@ -26,6 +26,16 @@ Here we write the updates of future releases.
 
 
 
+## [2.0.2] - 15-05-2024
+
+### Changed
+- Resolved conflicts
+
+### Removed
+- Expanded widget in the Kanban reference screen which was causing a run time error
+
+
+
 ## [2.0.1] - 15-05-2024
 
 ### Added
