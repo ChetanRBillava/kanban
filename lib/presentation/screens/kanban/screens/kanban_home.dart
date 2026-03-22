@@ -1,19 +1,15 @@
-
 import 'package:dotted_border/dotted_border.dart';
+import 'package:drag_and_drop_lists/drag_and_drop_lists.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kanban/core/constants/images.dart';
 import 'package:kanban/logic/cubit/app_theme_cubit.dart';
 import 'package:kanban/presentation/router/app_router.dart';
 import 'package:kanban/presentation/screens/kanban/cubit/kanban_cubit.dart';
 import 'package:kanban/presentation/screens/kanban/cubit/kanban_form_cubit.dart';
-import 'package:kanban/presentation/screens/kanban/models/kanban_model.dart';
-import 'package:kanban/presentation/screens/kanban/models/user_model.dart';
 import 'package:kanban/presentation/utils/app_texts.dart';
 
 import 'package:kanban/presentation/screens/kanban/widgets/kanban_tile.dart';
-import 'package:kanban/presentation/utils/custom_print.dart';
 
 class KanbanHome extends StatefulWidget {
   const KanbanHome({super.key});
@@ -23,7 +19,6 @@ class KanbanHome extends StatefulWidget {
 }
 
 class _KanbanHomeState extends State<KanbanHome> {
-
   void showPicker(context) {
     //debugPrint("clicking..............");
     showModalBottomSheet(
@@ -37,70 +32,74 @@ class _KanbanHomeState extends State<KanbanHome> {
                     children: <Widget>[
                       ///Kanban
                       ListTile(
-                        tileColor: appThemeState.themeClass.appbarBackgroundColor,
+                        tileColor:
+                            appThemeState.themeClass.appbarBackgroundColor,
                         title: Row(
                           children: [
                             AppTexts.normalText(
-                                textProperties: TextProperties(
-                                    text: 'Kanban Reference'
-                                )
-                            )
+                                textProperties:
+                                    TextProperties(text: 'Kanban Reference'))
                           ],
                         ),
-                        onTap: (){
+                        onTap: () {
                           Navigator.pop(context);
-                          Navigator.of(context).pushNamed(AppRouter.kanbanReference);
+                          Navigator.of(context)
+                              .pushNamed(AppRouter.kanbanReference);
                         },
                       ),
+
                       ///Drag and drop
                       ListTile(
-                        tileColor: (appThemeState).themeClass.appbarBackgroundColor,
+                        tileColor:
+                            (appThemeState).themeClass.appbarBackgroundColor,
                         title: Row(
                           children: [
                             AppTexts.normalText(
                                 textProperties: TextProperties(
-                                    text: 'Drag and Drop List reference'
-                                )
-                            )
+                                    text: 'Drag and Drop List reference'))
                           ],
                         ),
-                        onTap: (){
+                        onTap: () {
                           Navigator.pop(context);
-                          Navigator.of(context).pushNamed(AppRouter.dragAndDropReference);
+                          Navigator.of(context)
+                              .pushNamed(AppRouter.dragAndDropReference);
                         },
                       ),
+
                       ///Draggable
                       ListTile(
-                        tileColor: (appThemeState).themeClass.appbarBackgroundColor,
+                        tileColor:
+                            (appThemeState).themeClass.appbarBackgroundColor,
                         title: Row(
                           children: [
                             AppTexts.normalText(
                                 textProperties: TextProperties(
-                                    text: 'Draggable and Drag Target reference'
-                                )
-                            )
+                                    text:
+                                        'Draggable and Drag Target reference'))
                           ],
                         ),
-                        onTap: (){
+                        onTap: () {
                           Navigator.pop(context);
-                          Navigator.of(context).pushNamed(AppRouter.draggableWidget);
+                          Navigator.of(context)
+                              .pushNamed(AppRouter.draggableWidget);
                         },
                       ),
+
                       ///Hydrated
                       ListTile(
-                        tileColor: (appThemeState).themeClass.appbarBackgroundColor,
+                        tileColor:
+                            (appThemeState).themeClass.appbarBackgroundColor,
                         title: Row(
                           children: [
                             AppTexts.normalText(
-                                textProperties: TextProperties(
-                                    text: 'Hydrated Bloc'
-                                )
-                            )
+                                textProperties:
+                                    TextProperties(text: 'Hydrated Bloc'))
                           ],
                         ),
-                        onTap: (){
+                        onTap: () {
                           Navigator.pop(context);
-                          Navigator.of(context).pushNamed(AppRouter.hydratedBlocScreen);
+                          Navigator.of(context)
+                              .pushNamed(AppRouter.hydratedBlocScreen);
                         },
                       ),
                     ],
@@ -111,7 +110,7 @@ class _KanbanHomeState extends State<KanbanHome> {
           );
         });
   }
-  
+
   DateTime? currentBackPressTime;
 
   @override
@@ -122,19 +121,17 @@ class _KanbanHomeState extends State<KanbanHome> {
           builder: (context, kanbanState) {
             return PopScope(
               canPop: false,
-              onPopInvoked: (didPop){
+              onPopInvoked: (didPop) {
                 DateTime now = DateTime.now();
                 if (currentBackPressTime == null ||
-                    now.difference(currentBackPressTime!) > const Duration(seconds: 2)) {
+                    now.difference(currentBackPressTime!) >
+                        const Duration(seconds: 2)) {
                   currentBackPressTime = now;
-                  ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        duration: Duration(seconds: 2),
-                        content: Text('Press again to exit'),
-                      )
-                  );
-                }
-                else{
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    duration: Duration(seconds: 2),
+                    content: Text('Press again to exit'),
+                  ));
+                } else {
                   SystemNavigator.pop();
                 }
               },
@@ -142,21 +139,22 @@ class _KanbanHomeState extends State<KanbanHome> {
                 child: Scaffold(
                   backgroundColor: appThemeState.themeClass.backgroundColor,
                   appBar: AppBar(
-                    backgroundColor: appThemeState.themeClass.appbarBackgroundColor,
+                    backgroundColor:
+                        appThemeState.themeClass.appbarBackgroundColor,
                     automaticallyImplyLeading: false,
                     title: AppTexts.headingText(
-                        textProperties: TextProperties(
-                            text: 'Kanban Board'
-                        )
-                    ),
+                        textProperties: TextProperties(text: 'Kanban Board')),
                     actions: [
                       Padding(
                         padding: const EdgeInsets.only(right: 8.0),
                         child: GestureDetector(
-                          onTap: (){
+                          onTap: () {
                             showPicker(context);
                           },
-                          child: Icon(Icons.local_activity, color: appThemeState.themeClass.iconPrimary,),
+                          child: Icon(
+                            Icons.local_activity,
+                            color: appThemeState.themeClass.iconPrimary,
+                          ),
                         ),
                       )
                     ],
@@ -165,111 +163,131 @@ class _KanbanHomeState extends State<KanbanHome> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: SizedBox(
-                        height:( kanbanState.minCount * 110)+10,
+                        height: (kanbanState.minCount * 110) + 10,
                         child: ListView.separated(
                             scrollDirection: Axis.horizontal,
                             shrinkWrap: true,
                             itemCount: kanbanState.kanbanColumns.length,
-                            itemBuilder: (context, structureIndex){
-
-                              if(kanbanState.kanbanColumns[structureIndex].tasks.isEmpty){
-                                return DragTarget<List>(
-                                    onAccept: (indexes) {
-                                      BlocProvider.of<KanbanCubit>(context).dragUpdate(
-                                          indexes[0],indexes[1], structureIndex
-                                      );
-                                    },
-                                    builder: (context, candidateData, rejectedData) {
-                                      return  Column(
-                                        children: [
-                                          KanbanHeader(
-                                            title: kanbanState.kanbanColumns[structureIndex].title,
-                                            status: kanbanState.kanbanColumns[structureIndex].status,
-                                            index: structureIndex,
-                                          ),
-                                          const SizedBox(height: 45,),
-                                          AppTexts.headingText(
-                                              textProperties: TextProperties(
-                                                  text: 'No task available'
-                                              )
-                                          )
-                                        ],
-                                      );
-                                    }
-                                );
+                            itemBuilder: (context, structureIndex) {
+                              if (kanbanState.kanbanColumns[structureIndex]
+                                  .tasks.isEmpty) {
+                                return DragTarget<List>(onAccept: (indexes) {
+                                  BlocProvider.of<KanbanCubit>(context)
+                                      .dragUpdate(indexes[0], indexes[1],
+                                          structureIndex);
+                                }, builder:
+                                    (context, candidateData, rejectedData) {
+                                  return Column(
+                                    children: [
+                                      KanbanHeader(
+                                        title: kanbanState
+                                            .kanbanColumns[structureIndex]
+                                            .title,
+                                        status: kanbanState
+                                            .kanbanColumns[structureIndex]
+                                            .status,
+                                        index: structureIndex,
+                                      ),
+                                      const SizedBox(
+                                        height: 45,
+                                      ),
+                                      AppTexts.headingText(
+                                          textProperties: TextProperties(
+                                              text: 'No task available'))
+                                    ],
+                                  );
+                                });
                               }
 
-                              return DragTarget<List>(
-                                  onAccept: (indexes) {
-                                    BlocProvider.of<KanbanCubit>(context).dragUpdate(
-                                        indexes[0],indexes[1], structureIndex
-                                    );
-                                  },
-                                  builder: (context, candidateData, rejectedData) {
-                                  return SizedBox(
-                                    width: 250,
-                                    child: ListView.separated(
-                                      shrinkWrap: true,
-                                      physics: const NeverScrollableScrollPhysics(),
-                                      itemCount: kanbanState.kanbanColumns[structureIndex].tasks.length,
-                                      itemBuilder: (context, taskIndex){
-                                        if(taskIndex==0){
-                                          return Column(
-                                            children: [
-                                              KanbanHeader(
-                                                title: kanbanState.kanbanColumns[structureIndex].title,
-                                                status: kanbanState.kanbanColumns[structureIndex].status,
-                                                index: structureIndex,
-                                              ),
-                                              SizedBox(height: 15,),
-                                              Draggable(
-                                                data: [taskIndex, structureIndex],
-                                                feedback: Opacity(
-
-                                                  opacity: 0.4,
-                                                  child: KanbanTile(
-                                                      structureIndex: structureIndex,
-                                                      task: kanbanState.kanbanColumns[structureIndex].tasks[taskIndex],
-                                                      taskIndex: taskIndex
-                                                  ),
-                                                ),
-                                                child: KanbanTile(
-                                                    structureIndex: structureIndex,
-                                                    task: kanbanState.kanbanColumns[structureIndex].tasks[taskIndex],
-                                                    taskIndex: taskIndex
-                                                ),
-                                              )
-                                            ],
-                                          );
-                                        }
-
-                                        return Draggable(
-                                          data: [taskIndex, structureIndex],
-                                          feedback: Opacity(
-
-                                            opacity: 0.4,
-                                            child: KanbanTile(
-                                                structureIndex: structureIndex,
-                                                task: kanbanState.kanbanColumns[structureIndex].tasks[taskIndex],
-                                                taskIndex: taskIndex
+                              return DragTarget<List>(onAccept: (indexes) {
+                                BlocProvider.of<KanbanCubit>(context)
+                                    .dragUpdate(
+                                        indexes[0], indexes[1], structureIndex);
+                              }, builder:
+                                  (context, candidateData, rejectedData) {
+                                return SizedBox(
+                                  width: 250,
+                                  child: ListView.separated(
+                                    shrinkWrap: true,
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
+                                    itemCount: kanbanState
+                                        .kanbanColumns[structureIndex]
+                                        .tasks
+                                        .length,
+                                    itemBuilder: (context, taskIndex) {
+                                      if (taskIndex == 0) {
+                                        return Column(
+                                          children: [
+                                            KanbanHeader(
+                                              title: kanbanState
+                                                  .kanbanColumns[structureIndex]
+                                                  .title,
+                                              status: kanbanState
+                                                  .kanbanColumns[structureIndex]
+                                                  .status,
+                                              index: structureIndex,
                                             ),
-                                          ),
+                                            SizedBox(
+                                              height: 15,
+                                            ),
+                                            Draggable(
+                                              data: [taskIndex, structureIndex],
+                                              feedback: Opacity(
+                                                opacity: 0.4,
+                                                child: KanbanTile(
+                                                    structureIndex:
+                                                        structureIndex,
+                                                    task: kanbanState
+                                                        .kanbanColumns[
+                                                            structureIndex]
+                                                        .tasks[taskIndex],
+                                                    taskIndex: taskIndex),
+                                              ),
+                                              child: KanbanTile(
+                                                  structureIndex:
+                                                      structureIndex,
+                                                  task: kanbanState
+                                                      .kanbanColumns[
+                                                          structureIndex]
+                                                      .tasks[taskIndex],
+                                                  taskIndex: taskIndex),
+                                            )
+                                          ],
+                                        );
+                                      }
+
+                                      return Draggable(
+                                        data: [taskIndex, structureIndex],
+                                        feedback: Opacity(
+                                          opacity: 0.4,
                                           child: KanbanTile(
                                               structureIndex: structureIndex,
-                                              task: kanbanState.kanbanColumns[structureIndex].tasks[taskIndex],
-                                              taskIndex: taskIndex
-                                          ),
-                                        ) ;
-                                      }, separatorBuilder: (context, index){
-                                      return const SizedBox(height: 15,);
+                                              task: kanbanState
+                                                  .kanbanColumns[structureIndex]
+                                                  .tasks[taskIndex],
+                                              taskIndex: taskIndex),
+                                        ),
+                                        child: KanbanTile(
+                                            structureIndex: structureIndex,
+                                            task: kanbanState
+                                                .kanbanColumns[structureIndex]
+                                                .tasks[taskIndex],
+                                            taskIndex: taskIndex),
+                                      );
                                     },
-                                    ),
-                                  );
-                                }
-                              );
-                            }, separatorBuilder: (context, index){
-                          return const SizedBox(width: 15);
-                        }),
+                                    separatorBuilder: (context, index) {
+                                      return const SizedBox(
+                                        height: 15,
+                                      );
+                                    },
+                                  ),
+                                );
+                              });
+                            },
+                            separatorBuilder: (context, index) {
+                              return const SizedBox(width: 15);
+                            }),
                       ),
                     ),
                   ),
@@ -284,12 +302,11 @@ class _KanbanHomeState extends State<KanbanHome> {
 }
 
 class KanbanHeader extends StatelessWidget {
-  const KanbanHeader({
-    super.key,
-    required this.title,
-    required this.status,
-    required this.index
-  });
+  const KanbanHeader(
+      {super.key,
+      required this.title,
+      required this.status,
+      required this.index});
 
   final String title, status;
   final int index;
@@ -297,36 +314,39 @@ class KanbanHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AppThemeCubit, AppThemeState>(
-  builder: (context, appThemeState) {
-    return DottedBorder(
-      color: appThemeState.themeClass.textColorPrimary,
-      child: Container(
-        width: 250,
-        alignment: Alignment.center,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              AppTexts.labelText(
-                  textProperties: TextProperties(
-                      text: title,
-                      textColor: appThemeState.themeClass.textColorPrimary
+      builder: (context, appThemeState) {
+        return DottedBorder(
+          color: appThemeState.themeClass.textColorPrimary,
+          child: Container(
+            width: 250,
+            alignment: Alignment.center,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  AppTexts.labelText(
+                      textProperties: TextProperties(
+                          text: title,
+                          textColor:
+                              appThemeState.themeClass.textColorPrimary)),
+                  GestureDetector(
+                    onTap: () {
+                      BlocProvider.of<KanbanFormCubit>(context)
+                          .setStatus(index);
+                      Navigator.of(context).pushNamed(AppRouter.kanbanForm);
+                    },
+                    child: Icon(
+                      Icons.add,
+                      color: appThemeState.themeClass.iconPrimary,
+                    ),
                   )
+                ],
               ),
-              GestureDetector(
-                onTap: (){
-                  BlocProvider.of<KanbanFormCubit>(context).setStatus(index);
-                  Navigator.of(context).pushNamed(AppRouter.kanbanForm);
-                },
-                child: Icon(Icons.add, color: appThemeState.themeClass.iconPrimary,),
-              )
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
-  },
-);
   }
 }

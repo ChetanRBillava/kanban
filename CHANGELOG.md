@@ -26,6 +26,13 @@ Here we write the updates of future releases.
 
 
 
+## [2.0.3] - 22-03-2026
+
+### Changed
+- Flutter 3 migration
+
+
+
 ## [2.0.2] - 15-05-2024
 
 ### Changed
